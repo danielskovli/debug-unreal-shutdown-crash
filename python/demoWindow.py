@@ -88,6 +88,7 @@ class DemoWindow(QtWidgets.QMainWindow):
 
 
 # Doesn't seem to matter if these are global or not
+# Update: Yes it does seem to matter, see `showWindow` below with `global` call
 UNREAL_APP = None
 WINDOW = None
 
@@ -95,6 +96,10 @@ WINDOW = None
 # The point of this entry method is because in actual implementation,
 # these windows are imported modules -- not standalone scripts to be executed
 def showWindow():
+
+    # This seems to take care of it. So perhaps it was GC related after all
+    global UNREAL_APP, WINDOW
+
     UNREAL_APP = QtWidgets.QApplication.instance() or QtWidgets.QApplication(sys.argv)
     WINDOW = DemoWindow()
     WINDOW.show()
@@ -105,6 +110,7 @@ def showWindow():
 if __name__ == '__main__':
 
     # This causes a crash:
+    # Update: with `global` call, crashes no longer
     showWindow()
 
     # This works as expected:
