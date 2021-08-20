@@ -1,0 +1,34 @@
+{
+    "files.exclude": {
+        "**/*.pyc": true,
+        "**/*.exe": true,
+        "**/*.dll": true,
+        "**/__pycache__": true
+    },
+    "python.linting.pylintArgs": [
+        "--init-hook=import sys; sys.path.extend(['${workspaceFolder}\\python', ${workspaceFolder}\\python\\lib', '${workspaceFolder}\\python\\.autocomplete']);",
+        "--disable=R,C,W0703,W0702,W0201,W0212,E1111,no-init"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}\\python\\.autocomplete",
+        "${workspaceFolder}\\python\\lib",
+        "${workspaceFolder}\\python"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}\\python\\.autocomplete",
+        "${workspaceFolder}\\python\\lib",
+        "${workspaceFolder}\\python"
+    ],
+    "autoDocstring.quoteStyle": "'''",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUndefinedVariable": "error",
+        "reportMissingImports": "error"
+    },
+    "python.analysis.autoImportCompletions": false,
+    "search.exclude": {
+        "**/.autocomplete": true,
+        "**/lib": true
+    }
+}
